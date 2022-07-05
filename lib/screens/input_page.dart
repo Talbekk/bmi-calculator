@@ -1,9 +1,11 @@
-import 'package:bmi_calculator/results_page.dart';
-import 'package:bmi_calculator/reusable_card.dart';
+import 'package:bmi_calculator/screens/results_page.dart';
+import 'package:bmi_calculator/components/reusable_card.dart';
+import 'package:bmi_calculator/components/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'icon_content.dart';
-import 'constants.dart';
+import '../components/bottom_button.dart';
+import '../components/icon_content.dart';
+import '../constants.dart';
 
 enum Gender {
   male,
@@ -211,7 +213,8 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          BottomButton(
+            buttonTitle: 'CALCULATE',
             onTap: () {
               Navigator.push(
                 context,
@@ -220,48 +223,9 @@ class _InputPageState extends State<InputPage> {
                 ),
               );
             },
-            child: Container(
-              child: Center(
-                child: Text(
-                  'CALCULATE',
-                  style: kLargeButtonTextStyle,
-                ),
-              ),
-              color: kBottomContainerColor,
-              margin: EdgeInsets.only(
-                top: 10.0,
-              ),
-              padding: EdgeInsets.only(
-                bottom: 10.0,
-              ),
-              width: double.infinity,
-              height: kBottomContainerHeight,
-            ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({@required this.icon, @required this.updateWeight});
-
-  final IconData icon;
-  final Function updateWeight;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(icon),
-      onPressed: updateWeight,
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      elevation: 6.0,
     );
   }
 }
